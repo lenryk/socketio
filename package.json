@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node server/server.js"
+    "start": "node server/server.js",
+    "test" : "mocha server/**/*.test.js"
   },
   "engines": {
     "node": "6.2.2"
@@ -19,7 +20,10 @@
     "socket.io": "^1.4.8"
   },
   "main": "app.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "expect": "^1.20.2",
+    "mocha": "^3.0.2"
+  },
   "author": "",
   "license": "ISC",
   "description": ""
