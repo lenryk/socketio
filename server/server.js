@@ -2,6 +2,7 @@ const path = require("path");
 const http = require("http");
 const express = require("express");
 const socketIO = require("socket.io");
+const moment = require("moment");
 
 const {generateMessage, generateLocationMessage} = require("./utils/message");
 const port = process.env.PORT || 3000;
@@ -26,7 +27,8 @@ io.on("connection", (socket) => {
     });
 
     socket.on("createLocationMessage", (coords) => {
-        io.emit("newLocationMessage", generateLocationMessage("Admin",coords.latitude,coords.longitude));
+        let formattedTime = moment(coords.createdAt).format("h:mm a");
+        io.emit("newLocationMessage", generateLocationMessage(`Admin ${formattedTime}`,coords.latitude,coords.longitude));
     });
 
     socket.on("disconnect", () => {
