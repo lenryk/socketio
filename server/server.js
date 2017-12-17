@@ -28,7 +28,7 @@ io.on("connection", (socket) => {
 
     socket.on("createLocationMessage", (coords) => {
         let formattedTime = moment(coords.createdAt).format("h:mm a");
-        io.emit("newLocationMessage", generateLocationMessage(`Admin ${formattedTime}`,coords.latitude,coords.longitude));
+        io.emit("newLocationMessage", generateLocationMessage(`Admin`,coords.latitude,coords.longitude));
     });
 
     socket.on("disconnect", () => {
